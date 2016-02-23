@@ -17,12 +17,18 @@ namespace GithubOrg
         public LoginPage(Controller _controller)
         {
             this._controller = _controller;
+            _controller.authErrorHandler = onAuthenticationError;
             InitializeComponent();
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            _controller.signIn(this.txtUser.Text, this.txtPassword.Text);
+            _controller.signIn(txtUser.Text, txtPassword.Text, txtToken.Text);
+        }
+        public void onAuthenticationError(object sender, string e)
+        {
+            lblError.Visible = true;
+            lblError.Text = e;
         }
     }
 }

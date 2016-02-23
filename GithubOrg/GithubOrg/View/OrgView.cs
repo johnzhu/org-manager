@@ -12,9 +12,31 @@ namespace GithubOrg
 {
     public partial class OrgView : UserControl
     {
-        public OrgView()
+        Controller _controller;
+        public OrgView(Controller controller)
         {
+            _controller = controller;
             InitializeComponent();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewRepo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void OrgView_Load(object sender, EventArgs e)
+        {
+            _controller.loadTeam();
         }
     }
 }

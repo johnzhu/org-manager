@@ -33,7 +33,9 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSignIn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtToken = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -71,7 +73,7 @@
             // 
             // btnSignIn
             // 
-            this.btnSignIn.Location = new System.Drawing.Point(192, 233);
+            this.btnSignIn.Location = new System.Drawing.Point(192, 256);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(75, 23);
             this.btnSignIn.TabIndex = 4;
@@ -79,21 +81,39 @@
             this.btnSignIn.UseVisualStyleBackColor = true;
             this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
-            // label3
+            // lblError
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 186);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Error";
-            this.label3.Visible = false;
+            this.lblError.AutoSize = true;
+            this.lblError.Location = new System.Drawing.Point(66, 209);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(29, 13);
+            this.lblError.TabIndex = 5;
+            this.lblError.Text = "Error";
+            this.lblError.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(69, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Or use API token";
+            // 
+            // txtToken
+            // 
+            this.txtToken.Location = new System.Drawing.Point(171, 168);
+            this.txtToken.Name = "txtToken";
+            this.txtToken.Size = new System.Drawing.Size(176, 20);
+            this.txtToken.TabIndex = 3;
             // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtToken);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPassword);
@@ -113,6 +133,8 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSignIn;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtToken;
     }
 }

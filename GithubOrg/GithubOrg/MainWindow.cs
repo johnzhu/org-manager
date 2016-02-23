@@ -16,6 +16,7 @@ namespace GithubOrg
         public MainWindow( Controller controller)
         {
             _controller = controller;
+            _controller.OrgSelectedHandler = onOrgSet;
             InitializeComponent();
         }
 
@@ -25,6 +26,16 @@ namespace GithubOrg
             {
                 this.panel1.Controls.Add(new LoginPage(_controller));
             }
+        }
+
+        public void onOrgSet(object sender, EventArgs e)
+        {
+            if (_controller.orgs.Orgs.Count == 1)
+            {
+                _controller.orgs.org = _controller.orgs.Orgs[0];
+            }
+            this.panel1.Controls.Clear();
+            this.panel1.Controls.Add(new OrgView(_controller));
         }
     }
 }

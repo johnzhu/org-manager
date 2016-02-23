@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Octokit.Reactive.Clients;
 using Octokit;
 using Octokit.Reactive;
+using GithubOrg.Model;
 
 namespace GithubOrg
 {
@@ -14,17 +15,42 @@ namespace GithubOrg
     {
         public bool HasToken { get; internal set; }
         GitHubClient client = new GitHubClient(new ProductHeaderValue("MyAmazingApp"));
+        public EventHandler<string> authErrorHandler;
+        public EventHandler OrgSelectedHandler;
+        ObservableGitHubClient _client;
+        public UserOrganizations orgs { get; private set; }
 
-
-        internal async void signIn(string username, string password)
+        public Controller()
         {
-            var basicAuth = new Credentials(username, password); // NOTE: not real credentials
+            _client = new ObservableGitHubClient(client);
+            orgs = new UserOrganizations();
+        }
+        internal void signIn(string username, string password, string token)
+        {
+            var basicAuth = String.IsNullOrEmpty(token)?new Credentials(username, password):new Credentials(token);
             client.Credentials = basicAuth;
-            var orgs =  await client.Organization.GetAllForCurrent();
-            var org = orgs[0];
-            var members = await client.Organization.Team.GetAll(org.Name);
+            _client.Organization.GetAllForCurrent().Subscribe<Organization>(
+                o => addOrg(o),
+                ex=>
+                {
+                    if (authErrorHandler != null) { authErrorHandler(this, ex.Message); }
+                },
+                () => setOrg()
+                );
+                ;
 
 
+        }
+
+        private void setOrg()
+        {
+            OrgSelectedHandler(this, new EventArgs());
+
+        }
+
+        private void addOrg(Organization o)
+        {
+            orgs.Orgs.Add(o);
         }
     }
 }
