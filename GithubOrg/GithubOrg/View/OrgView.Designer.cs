@@ -38,6 +38,18 @@
       this.btnAddToTeam = new System.Windows.Forms.Button();
       this.teamList = new System.Windows.Forms.ComboBox();
       this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+      this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.fUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.PublicRepos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.fName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.fDescrption = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.fLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.DefaultBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.CreateAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.PushedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.fTeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.Members = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.Repositories = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.tabControl1.SuspendLayout();
       this.tabTeam.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.teamGridView)).BeginInit();
@@ -57,21 +69,21 @@
       this.tabControl1.Controls.Add(this.tabUser);
       this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
-      this.tabControl1.MinimumSize = new System.Drawing.Size(300, 400);
+      this.tabControl1.MinimumSize = new System.Drawing.Size(200, 260);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(839, 704);
+      this.tabControl1.Size = new System.Drawing.Size(861, 320);
       this.tabControl1.TabIndex = 0;
-      this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
+      this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
       // 
       // tabTeam
       // 
       this.tabTeam.BackColor = System.Drawing.Color.Transparent;
       this.tabTeam.Controls.Add(this.teamGridView);
-      this.tabTeam.Location = new System.Drawing.Point(4, 29);
+      this.tabTeam.Location = new System.Drawing.Point(4, 22);
       this.tabTeam.Margin = new System.Windows.Forms.Padding(0);
       this.tabTeam.Name = "tabTeam";
-      this.tabTeam.Size = new System.Drawing.Size(831, 671);
+      this.tabTeam.Size = new System.Drawing.Size(853, 294);
       this.tabTeam.TabIndex = 2;
       this.tabTeam.Text = "Team";
       // 
@@ -83,11 +95,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.teamGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.teamGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fTeamName,
+            this.Members,
+            this.Repositories});
       this.teamGridView.Location = new System.Drawing.Point(0, 0);
-      this.teamGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.teamGridView.Name = "teamGridView";
       this.teamGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.teamGridView.Size = new System.Drawing.Size(831, 671);
+      this.teamGridView.Size = new System.Drawing.Size(852, 292);
       this.teamGridView.TabIndex = 0;
       this.teamGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
       // 
@@ -96,11 +111,10 @@
       this.tabRepo.BackColor = System.Drawing.Color.Gainsboro;
       this.tabRepo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
       this.tabRepo.Controls.Add(this.repoGridView);
-      this.tabRepo.Location = new System.Drawing.Point(4, 29);
-      this.tabRepo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabRepo.Location = new System.Drawing.Point(4, 22);
       this.tabRepo.Name = "tabRepo";
-      this.tabRepo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabRepo.Size = new System.Drawing.Size(831, 671);
+      this.tabRepo.Padding = new System.Windows.Forms.Padding(3);
+      this.tabRepo.Size = new System.Drawing.Size(853, 294);
       this.tabRepo.TabIndex = 1;
       this.tabRepo.Text = "Repositories";
       // 
@@ -113,23 +127,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.repoGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.repoGridView.Location = new System.Drawing.Point(4, 0);
-      this.repoGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.repoGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fName,
+            this.fDescrption,
+            this.fLanguage,
+            this.DefaultBranch,
+            this.CreateAt,
+            this.PushedAt});
+      this.repoGridView.Location = new System.Drawing.Point(3, 0);
       this.repoGridView.Name = "repoGridView";
       this.repoGridView.ReadOnly = true;
       this.repoGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.repoGridView.Size = new System.Drawing.Size(823, 671);
+      this.repoGridView.Size = new System.Drawing.Size(852, 292);
       this.repoGridView.TabIndex = 1;
-      this.repoGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRepo_CellContentClick);
       // 
       // tabUser
       // 
       this.tabUser.Controls.Add(this.userGridView);
-      this.tabUser.Location = new System.Drawing.Point(4, 29);
-      this.tabUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tabUser.Location = new System.Drawing.Point(4, 22);
       this.tabUser.Name = "tabUser";
-      this.tabUser.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tabUser.Size = new System.Drawing.Size(831, 671);
+      this.tabUser.Padding = new System.Windows.Forms.Padding(3);
+      this.tabUser.Size = new System.Drawing.Size(853, 294);
       this.tabUser.TabIndex = 0;
       this.tabUser.Text = "Users";
       this.tabUser.UseVisualStyleBackColor = true;
@@ -138,22 +156,28 @@
       // 
       this.userGridView.AllowUserToAddRows = false;
       this.userGridView.AllowUserToDeleteRows = false;
+      this.userGridView.AllowUserToOrderColumns = true;
+      this.userGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.userGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.userGridView.Location = new System.Drawing.Point(0, 0);
-      this.userGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.userGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Login,
+            this.fUserName,
+            this.PublicRepos});
+      this.userGridView.Location = new System.Drawing.Point(3, 0);
       this.userGridView.Name = "userGridView";
       this.userGridView.ReadOnly = true;
       this.userGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.userGridView.Size = new System.Drawing.Size(835, 671);
+      this.userGridView.Size = new System.Drawing.Size(852, 292);
       this.userGridView.TabIndex = 2;
-      this.userGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
       // 
       // btnAddToTeam
       // 
-      this.btnAddToTeam.Location = new System.Drawing.Point(162, 710);
-      this.btnAddToTeam.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.btnAddToTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.btnAddToTeam.Location = new System.Drawing.Point(85, 332);
       this.btnAddToTeam.Name = "btnAddToTeam";
-      this.btnAddToTeam.Size = new System.Drawing.Size(152, 35);
+      this.btnAddToTeam.Size = new System.Drawing.Size(101, 23);
       this.btnAddToTeam.TabIndex = 1;
       this.btnAddToTeam.Text = "Add to Team";
       this.btnAddToTeam.UseVisualStyleBackColor = true;
@@ -161,29 +185,112 @@
       // 
       // teamList
       // 
-      this.teamList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.teamList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.teamList.DisplayMember = "Name";
       this.teamList.FormattingEnabled = true;
-      this.teamList.Location = new System.Drawing.Point(333, 714);
-      this.teamList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.teamList.Location = new System.Drawing.Point(222, 334);
       this.teamList.Name = "teamList";
-      this.teamList.Size = new System.Drawing.Size(342, 28);
+      this.teamList.Size = new System.Drawing.Size(229, 21);
       this.teamList.TabIndex = 3;
       this.teamList.SelectedValueChanged += new System.EventHandler(this.teamList_SelectedValueChanged);
       // 
+      // Login
+      // 
+      this.Login.DataPropertyName = "Login";
+      this.Login.HeaderText = "Login";
+      this.Login.Name = "Login";
+      this.Login.ReadOnly = true;
+      // 
+      // fUserName
+      // 
+      this.fUserName.DataPropertyName = "Name";
+      this.fUserName.HeaderText = "Name";
+      this.fUserName.Name = "fUserName";
+      this.fUserName.ReadOnly = true;
+      // 
+      // PublicRepos
+      // 
+      this.PublicRepos.DataPropertyName = "PublicRepos";
+      this.PublicRepos.HeaderText = "PublicRepos";
+      this.PublicRepos.Name = "PublicRepos";
+      this.PublicRepos.ReadOnly = true;
+      // 
+      // fName
+      // 
+      this.fName.DataPropertyName = "Name";
+      this.fName.HeaderText = "Name";
+      this.fName.Name = "fName";
+      this.fName.ReadOnly = true;
+      // 
+      // fDescrption
+      // 
+      this.fDescrption.DataPropertyName = "Description";
+      this.fDescrption.HeaderText = "Description";
+      this.fDescrption.Name = "fDescrption";
+      this.fDescrption.ReadOnly = true;
+      // 
+      // fLanguage
+      // 
+      this.fLanguage.DataPropertyName = "Language";
+      this.fLanguage.HeaderText = "Language";
+      this.fLanguage.Name = "fLanguage";
+      this.fLanguage.ReadOnly = true;
+      // 
+      // DefaultBranch
+      // 
+      this.DefaultBranch.DataPropertyName = "DefaultBranch";
+      this.DefaultBranch.HeaderText = "DefaultBranch";
+      this.DefaultBranch.Name = "DefaultBranch";
+      this.DefaultBranch.ReadOnly = true;
+      // 
+      // CreateAt
+      // 
+      this.CreateAt.DataPropertyName = "CreatedAt";
+      this.CreateAt.HeaderText = "CreatedAt";
+      this.CreateAt.Name = "CreateAt";
+      this.CreateAt.ReadOnly = true;
+      // 
+      // PushedAt
+      // 
+      this.PushedAt.DataPropertyName = "PushedAt";
+      this.PushedAt.HeaderText = "PushedAt";
+      this.PushedAt.Name = "PushedAt";
+      this.PushedAt.ReadOnly = true;
+      // 
+      // fTeamName
+      // 
+      this.fTeamName.DataPropertyName = "Name";
+      this.fTeamName.HeaderText = "Name";
+      this.fTeamName.Name = "fTeamName";
+      this.fTeamName.ReadOnly = true;
+      // 
+      // Members
+      // 
+      this.Members.DataPropertyName = "Members";
+      this.Members.HeaderText = "Members";
+      this.Members.Name = "Members";
+      this.Members.ReadOnly = true;
+      // 
+      // Repositories
+      // 
+      this.Repositories.DataPropertyName = "Repositories";
+      this.Repositories.HeaderText = "Repositories";
+      this.Repositories.Name = "Repositories";
+      this.Repositories.ReadOnly = true;
+      // 
       // OrgView
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
       this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.BackColor = System.Drawing.SystemColors.Highlight;
       this.Controls.Add(this.teamList);
       this.Controls.Add(this.btnAddToTeam);
       this.Controls.Add(this.tabControl1);
       this.Margin = new System.Windows.Forms.Padding(0);
       this.Name = "OrgView";
-      this.Size = new System.Drawing.Size(861, 768);
+      this.Size = new System.Drawing.Size(861, 372);
       this.Load += new System.EventHandler(this.OrgView_Load);
       this.tabControl1.ResumeLayout(false);
       this.tabTeam.ResumeLayout(false);
@@ -197,8 +304,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabUser;
         private System.Windows.Forms.TabPage tabRepo;
         private System.Windows.Forms.TabPage tabTeam;
@@ -208,5 +313,18 @@
     private System.Windows.Forms.ComboBox teamList;
     private System.Windows.Forms.Button btnAddToTeam;
     private System.DirectoryServices.DirectoryEntry directoryEntry1;
+    private System.Windows.Forms.TabControl tabControl1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn Login;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fUserName;
+    private System.Windows.Forms.DataGridViewTextBoxColumn PublicRepos;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fName;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fDescrption;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fLanguage;
+    private System.Windows.Forms.DataGridViewTextBoxColumn DefaultBranch;
+    private System.Windows.Forms.DataGridViewTextBoxColumn CreateAt;
+    private System.Windows.Forms.DataGridViewTextBoxColumn PushedAt;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fTeamName;
+    private System.Windows.Forms.DataGridViewTextBoxColumn Members;
+    private System.Windows.Forms.DataGridViewTextBoxColumn Repositories;
   }
 }

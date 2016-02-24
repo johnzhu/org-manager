@@ -11,9 +11,10 @@ namespace GithubOrg.Model
 {
   public class DataModel
   {
-    public List<UserViewModel> Users { get; private set; }
+    public List<User> Users { get; private set; }
     public List<TeamViewModel> Teams { get; private set; }
     public IReadOnlyList<Repository> Repos { get; internal set; }
+    public Action onUpdateTeam { get; internal set; }
 
     public EventHandler onDataReady;
     GitHubClient _client;
@@ -26,13 +27,15 @@ namespace GithubOrg.Model
       
       var team = new TeamViewModel(t);
       var user = await _client.Organization.Team.GetAllMembers(t.Id);
+      var repo = await _client.Organization.Team.GetAllRepositories(t.Id);
       team.Users = user;
+      team.Repos = repo;
       return team;
     }
-    private async Task<UserViewModel> initUser(User u)
+    private Task<User> initUser(User u)
     {
-      var user  = await _client.User.Get(u.Login);
-      return new UserViewModel(user);
+      var user  =  _client.User.Get(u.Login);
+      return user;
     }
     public async void onOrgReady(string org)
     {
@@ -42,7 +45,7 @@ namespace GithubOrg.Model
         var tt= await Task.WhenAll(teams.Select(t => initTeam(t)));
         Teams = tt.ToList();
         var users = await _client.Organization.Member.GetAll(org);
-        var uu = await Task.WhenAll(users.Select( u =>initUser(u)));
+        var uu = await Task.WhenAll(users.Select( u => _client.User.Get(u.Login)));
         Users = uu.ToList();
         Repos = await _client.Repository.GetAllForOrg(org);
         onDataReady(this, null);
@@ -53,6 +56,23 @@ namespace GithubOrg.Model
       }
 
     }
-    
+    public async void reloadTeam(TeamViewModel team)
+    {
+      var user = await _client.Organization.Team.GetAllMembers(team.team.Id);
+      var repo = await _client.Organization.Team.GetAllRepositories(team.team.Id);
+      team.Users = user;
+      team.Repos = repo;
+      onUpdateTeam();
+    }
+
+    internal void doAddUser(List<User> userList, Team team)
+    {
+      Parallel.ForEach(userList, (x)=>_client.Organization.Team.AddMembership(team.Id, x.Login));
+    }
+
+    internal void doAddRepo(List<Repository> repoList, Team team)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

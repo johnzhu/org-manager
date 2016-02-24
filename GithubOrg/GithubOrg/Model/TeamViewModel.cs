@@ -11,12 +11,15 @@ namespace GithubOrg.Model
   {
     internal IReadOnlyList<User> Users;
     internal IReadOnlyList<Repository> Repos;
-    private Team t;
-    public string Name { get { return t.Name; } }
+    public Team team {
+      get; }
+    public string Name {  get { return team.Name; } }
+    public int Members { get { return Users == null? 0: Users.Count; } }
+    public int Repositories { get { return Repos == null ? 0 : Repos.Count; } }
 
     public TeamViewModel(Team t)
     {
-      this.t = t;
+      this.team = t;
     }
   }
 }
