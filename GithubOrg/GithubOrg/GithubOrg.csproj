@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
       <Private>True</Private>
@@ -71,17 +72,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\RepositoryViewModel.cs" />
+    <Compile Include="Model\RepoViewModel.cs" />
+    <Compile Include="Model\TeamUser.cs" />
+    <Compile Include="Model\TeamViewModel.cs" />
     <Compile Include="Model\UserOrganizations.cs" />
+    <Compile Include="Model\DataModel.cs" />
+    <Compile Include="Model\UserViewModel.cs" />
     <Compile Include="View\LoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="MainWindow.cs" />
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>

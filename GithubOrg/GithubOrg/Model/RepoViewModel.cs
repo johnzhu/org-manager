@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GithubOrg.Model
 {
-    class User
-    {
-    }
+  public class RepoViewModel
+  {
+  }
 }
