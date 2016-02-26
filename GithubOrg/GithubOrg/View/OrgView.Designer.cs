@@ -31,25 +31,25 @@
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabTeam = new System.Windows.Forms.TabPage();
       this.teamGridView = new System.Windows.Forms.DataGridView();
+      this.fTeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.Members = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.Repositories = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.tabRepo = new System.Windows.Forms.TabPage();
       this.repoGridView = new System.Windows.Forms.DataGridView();
       this.tabUser = new System.Windows.Forms.TabPage();
       this.userGridView = new System.Windows.Forms.DataGridView();
-      this.btnAddToTeam = new System.Windows.Forms.Button();
-      this.teamList = new System.Windows.Forms.ComboBox();
-      this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
       this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.fUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.PublicRepos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.btnAddToTeam = new System.Windows.Forms.Button();
+      this.teamList = new System.Windows.Forms.ComboBox();
+      this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
       this.fName = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.fDescrption = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.fLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DefaultBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.CreateAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.PushedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.fTeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.Members = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.Repositories = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.tabControl1.SuspendLayout();
       this.tabTeam.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.teamGridView)).BeginInit();
@@ -105,6 +105,27 @@
       this.teamGridView.Size = new System.Drawing.Size(852, 292);
       this.teamGridView.TabIndex = 0;
       this.teamGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+      // 
+      // fTeamName
+      // 
+      this.fTeamName.DataPropertyName = "Name";
+      this.fTeamName.HeaderText = "Name";
+      this.fTeamName.Name = "fTeamName";
+      this.fTeamName.ReadOnly = true;
+      // 
+      // Members
+      // 
+      this.Members.DataPropertyName = "Members";
+      this.Members.HeaderText = "Members";
+      this.Members.Name = "Members";
+      this.Members.ReadOnly = true;
+      // 
+      // Repositories
+      // 
+      this.Repositories.DataPropertyName = "Repositories";
+      this.Repositories.HeaderText = "Repositories";
+      this.Repositories.Name = "Repositories";
+      this.Repositories.ReadOnly = true;
       // 
       // tabRepo
       // 
@@ -172,6 +193,27 @@
       this.userGridView.Size = new System.Drawing.Size(852, 292);
       this.userGridView.TabIndex = 2;
       // 
+      // Login
+      // 
+      this.Login.DataPropertyName = "Login";
+      this.Login.HeaderText = "Login";
+      this.Login.Name = "Login";
+      this.Login.ReadOnly = true;
+      // 
+      // fUserName
+      // 
+      this.fUserName.DataPropertyName = "Name";
+      this.fUserName.HeaderText = "Name";
+      this.fUserName.Name = "fUserName";
+      this.fUserName.ReadOnly = true;
+      // 
+      // PublicRepos
+      // 
+      this.PublicRepos.DataPropertyName = "PublicRepos";
+      this.PublicRepos.HeaderText = "PublicRepos";
+      this.PublicRepos.Name = "PublicRepos";
+      this.PublicRepos.ReadOnly = true;
+      // 
       // btnAddToTeam
       // 
       this.btnAddToTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -193,27 +235,6 @@
       this.teamList.Size = new System.Drawing.Size(229, 21);
       this.teamList.TabIndex = 3;
       this.teamList.SelectedValueChanged += new System.EventHandler(this.teamList_SelectedValueChanged);
-      // 
-      // Login
-      // 
-      this.Login.DataPropertyName = "Login";
-      this.Login.HeaderText = "Login";
-      this.Login.Name = "Login";
-      this.Login.ReadOnly = true;
-      // 
-      // fUserName
-      // 
-      this.fUserName.DataPropertyName = "Name";
-      this.fUserName.HeaderText = "Name";
-      this.fUserName.Name = "fUserName";
-      this.fUserName.ReadOnly = true;
-      // 
-      // PublicRepos
-      // 
-      this.PublicRepos.DataPropertyName = "PublicRepos";
-      this.PublicRepos.HeaderText = "PublicRepos";
-      this.PublicRepos.Name = "PublicRepos";
-      this.PublicRepos.ReadOnly = true;
       // 
       // fName
       // 
@@ -257,34 +278,13 @@
       this.PushedAt.Name = "PushedAt";
       this.PushedAt.ReadOnly = true;
       // 
-      // fTeamName
-      // 
-      this.fTeamName.DataPropertyName = "Name";
-      this.fTeamName.HeaderText = "Name";
-      this.fTeamName.Name = "fTeamName";
-      this.fTeamName.ReadOnly = true;
-      // 
-      // Members
-      // 
-      this.Members.DataPropertyName = "Members";
-      this.Members.HeaderText = "Members";
-      this.Members.Name = "Members";
-      this.Members.ReadOnly = true;
-      // 
-      // Repositories
-      // 
-      this.Repositories.DataPropertyName = "Repositories";
-      this.Repositories.HeaderText = "Repositories";
-      this.Repositories.Name = "Repositories";
-      this.Repositories.ReadOnly = true;
-      // 
       // OrgView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
       this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.BackColor = System.Drawing.SystemColors.Highlight;
+      this.BackColor = System.Drawing.SystemColors.Control;
       this.Controls.Add(this.teamList);
       this.Controls.Add(this.btnAddToTeam);
       this.Controls.Add(this.tabControl1);
@@ -317,14 +317,14 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn Login;
     private System.Windows.Forms.DataGridViewTextBoxColumn fUserName;
     private System.Windows.Forms.DataGridViewTextBoxColumn PublicRepos;
-    private System.Windows.Forms.DataGridViewTextBoxColumn fName;
-    private System.Windows.Forms.DataGridViewTextBoxColumn fDescrption;
-    private System.Windows.Forms.DataGridViewTextBoxColumn fLanguage;
-    private System.Windows.Forms.DataGridViewTextBoxColumn DefaultBranch;
-    private System.Windows.Forms.DataGridViewTextBoxColumn CreateAt;
-    private System.Windows.Forms.DataGridViewTextBoxColumn PushedAt;
     private System.Windows.Forms.DataGridViewTextBoxColumn fTeamName;
     private System.Windows.Forms.DataGridViewTextBoxColumn Members;
     private System.Windows.Forms.DataGridViewTextBoxColumn Repositories;
+    private System.Windows.Forms.DataGridViewTextBoxColumn PushedAt;
+    private System.Windows.Forms.DataGridViewTextBoxColumn CreateAt;
+    private System.Windows.Forms.DataGridViewTextBoxColumn DefaultBranch;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fLanguage;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fDescrption;
+    private System.Windows.Forms.DataGridViewTextBoxColumn fName;
   }
 }

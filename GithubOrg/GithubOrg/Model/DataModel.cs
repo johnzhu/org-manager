@@ -9,6 +9,8 @@ using Octokit.Reactive;
 
 namespace GithubOrg.Model
 {
+
+   
   public class DataModel
   {
     public List<User> Users { get; private set; }
@@ -18,6 +20,8 @@ namespace GithubOrg.Model
 
     public EventHandler onDataReady;
     GitHubClient _client;
+    private string orgName;
+
     public DataModel (GitHubClient client)
     {
       _client = client;
@@ -41,6 +45,7 @@ namespace GithubOrg.Model
     {
       try
       {
+        orgName = org;
         var teams = await _client.Organization.Team.GetAll(org);
         var tt= await Task.WhenAll(teams.Select(t => initTeam(t)));
         Teams = tt.ToList();
@@ -72,7 +77,8 @@ namespace GithubOrg.Model
 
     internal void doAddRepo(List<Repository> repoList, Team team)
     {
-      throw new NotImplementedException();
+      Parallel.ForEach(repoList, (x) => _client.Organization.Team.AddRepository(team.Id, orgName, x.Name, Permission.Push));
     }
+ 
   }
 }
